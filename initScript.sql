@@ -75,19 +75,17 @@ DROP TABLE IF EXISTS `users_database`.`rooms_booked` ;
 CREATE TABLE IF NOT EXISTS `users_database`.`rooms_booked` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `booking_id` INT NOT NULL,
-  `room_id` INT NOT NULL,
-  `booking_id1` INT NOT NULL,
-  `room_id1` INT NOT NULL,
+  `room_id` INT NOT NULL
   PRIMARY KEY (`id`),
-  INDEX `fk_rooms_booked_booking1_idx` (`booking_id1` ASC),
-  INDEX `fk_rooms_booked_room1_idx` (`room_id1` ASC),
-  CONSTRAINT `fk_rooms_booked_booking1`
-    FOREIGN KEY (`booking_id1`)
+  INDEX `fk_rooms_booked_booking_idx` (`booking_id` ASC),
+  INDEX `fk_rooms_booked_room_idx` (`room_id` ASC),
+  CONSTRAINT `fk_rooms_booked_booking`
+    FOREIGN KEY (`booking_id`)
     REFERENCES `users_database`.`booking` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_rooms_booked_room1`
-    FOREIGN KEY (`room_id1`)
+  CONSTRAINT `fk_rooms_booked_room`
+    FOREIGN KEY (`room_id`)
     REFERENCES `users_database`.`room` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
